@@ -23,8 +23,17 @@ for(int i=0;i<10;i++)
 
     if(i==0)
     {
-        maxNeg = num;
-        minPos = num;
+        if(num>0)
+        {
+            maxNeg = num*(-1);
+            minPos = num;
+        }
+        else
+        {
+            maxNeg = num;
+            minPos = num*(-1);
+        }
+
     }
     else if(i!=0)
     {
