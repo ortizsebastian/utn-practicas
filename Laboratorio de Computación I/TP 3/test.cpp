@@ -5,21 +5,19 @@ using namespace std;
 
 int main()
 {
-int num, impar = 0, dupla;
+int num, acum = 0, prom;
 
-for(int i=1; i<6; i++)
-{
+for(int i=0; i<5; i++)
+    {
+    cout << "ingrese numero" << endl;
     cin >> num;
 
-    if(!num%2==0)
-    {
-        impar++;
+    acum+=num;
     }
-}
 
-dupla = impar/2;
+    prom=acum/5;
 
-    cout << dupla << endl;
+    cout << prom << endl;
 
   system("pause");
   return 0;
