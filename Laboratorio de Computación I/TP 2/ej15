@@ -15,10 +15,10 @@ int main()
 {
     int x;
 
-    cout << "Ingrese fecha un agno:" << endl;
+    cout << "Ingrese fecha un año:" << endl;
     cin >> x;
 
-    if(x%400==0&&x%4==0)
+    if(x%4 == 0 && x%100 != 0 || x%400 == 0)
     {
     cout << "Es bisiesto." << endl;
     }
