@@ -1,3 +1,8 @@
+/*
+8) Dada una lista de 10 números cargarlos en un vector. Luego ingresar un número e
+informar la cantidad de veces que ese número aparece en el vector.
+*/
+
 #include <iostream>
 #include <cstdlib>
 

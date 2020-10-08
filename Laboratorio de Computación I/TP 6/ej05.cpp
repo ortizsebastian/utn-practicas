@@ -1,17 +1,23 @@
+/*
+5) Dada una lista de 20 números enteros cargarlos en un vector. Determinar e informar con
+un cartel aclaratorio si el sector está ordenado estrictamente en forma creciente.
+Por ejemplo: el vector (1, 3, 5, 7, 9) está ordenado estrictamente, el vector (1, 5, 3, 7) no lo
+está.
+*/
+
 #include <iostream>
 #include <cstdlib>
 
 using namespace std;
 
 int main(){
-    int cant=10, v[cant];
 
-    int x, y=0;
+    int v[20], x;
     bool orden=true;
 
-    cout<<'\t'<<"INGRESE UNA LISTA DE "<<cant<<" NUMEROS:"<<endl;
+    cout<<'\t'<<"INGRESE UNA LISTA DE 20 NUMEROS:"<<endl;
 
-    for(int i=0; i<cant; i++)
+    for(int i=0; i<20; i++)
     {
         cin>>v[i];
 
@@ -26,17 +32,15 @@ int main(){
         else
         {
             orden=false;
-            y++;
         }
     }
     cout<<endl;
 
     if(orden==true){
-        cout<<"LISTA ORDENADA."<<endl;
+        cout<<"ORDENADO."<<endl;
     }
     else{
-        cout<<"LISTA DESORDENADA."<<endl;
-        cout<<"CANTIDAD DE RUPTURAS: "<<y<<endl;
+        cout<<"DESORDENADO."<<endl;
     }
 
     return 0;

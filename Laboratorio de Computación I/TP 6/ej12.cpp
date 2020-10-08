@@ -1,3 +1,8 @@
+/*
+12) Dada una lista de 10 números cargarlos en un vector. Luego detectar si en el vector hay
+algún elemento repetido, en tal caso indicarlo con un cartel “Hay Repetidos”.
+*/
+
 #include <iostream>
 #include <cstdlib>
 

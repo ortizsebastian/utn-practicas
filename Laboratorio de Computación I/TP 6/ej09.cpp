@@ -1,3 +1,8 @@
+/*
+9) Dada una lista de 10 números cargarlos en un vector. Luego contar y listar la cantidad
+de números pares que aparecen en el vector
+*/
+
 #include <iostream>
 #include <cstdlib>
 

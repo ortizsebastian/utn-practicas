@@ -1,3 +1,8 @@
+/*
+2) Leer 10 números y guardarlos en un vector. Determinar e informar cual es el valor
+máximo y su posición dentro del vector.
+*/
+
 #include <iostream>
 #include <cstdlib>
 
@@ -5,24 +10,25 @@ using namespace std;
 
 int main(){
 
-int v[5], vSuma=0, promedio, total=0;
+int v[10], nMax=0, pos;
 
-for(int i=0; i<5; i++)
+for(int i=0; i<10; i++)
     {
         cout<<"INGRESAR NUMERO:"<<endl;
         cin>>v[i];
-        vSuma+=v[i];
-    }
-    promedio=vSuma/5;
 
-for(int x=0; x<5; x++)
-    {
-        if(v[x]>promedio)
+        if(nMax==0)
         {
-            total++;
+            nMax=v[i];
+            pos=i+1;
+        }
+        else if(v[i]>nMax)
+        {
+            nMax=v[i];
+            pos=i+1;
         }
     }
-    cout<<"TOTAL DE NUMEROS MAYORES AL PROMEDIO: "<<total<<endl;
+    cout<<"MAXIMO: "<<nMax<<" POSICION: "<<pos<<endl;
 
     return 0;
 }

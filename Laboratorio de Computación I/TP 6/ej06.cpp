@@ -1,10 +1,16 @@
+/*
+6) Dada una lista de 20 números cargarlos en un vector. Determinar e informar la cantidad
+de “rupturas” que tiene el vector con respecto a un orden estrictamente creciente. Ejemplo:
+el vector 1,3,4,2,4,4,6,8,1,7,9 tiene 3 rupturas.
+*/
+
 #include <iostream>
 #include <cstdlib>
 
 using namespace std;
 
 int main(){
-    int cant=20, v[cant];
+    int cant=10, v[cant];
 
     int x, y=0;
     bool orden=true;

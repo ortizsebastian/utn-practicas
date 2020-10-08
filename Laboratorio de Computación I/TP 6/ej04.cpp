@@ -1,3 +1,8 @@
+/*
+4) Dada una lista de 10 números cargarlos en un vector. Luego intercambiar en el vector el
+número en la posición 0 con el número en la posición 9
+*/
+
 #include <iostream>
 #include <cstdlib>
 
@@ -5,36 +10,22 @@ using namespace std;
 
 int main(){
 
-    int v[20], x;
-    bool orden=true;
+    int x, y;
+    int v[10];
 
-    cout<<'\t'<<"INGRESE UNA LISTA DE 20 NUMEROS:"<<endl;
-
-    for(int i=0; i<20; i++)
+    cout<<'\t'<<"INGRESAR NUMERO."<<endl;
+    for(int i=0; i<10 ; i++)
     {
         cin>>v[i];
+    }
 
-        if(i==0)
-        {
-            x=v[i];
-        }
-        else if(v[i]>x)
-        {
-            x=v[i];
-        }
-        else
-        {
-            orden=false;
-        }
-    }
-    cout<<endl;
+    x=v[0];
+    y=v[9];
+    v[0]=y;
+    v[9]=x;
 
-    if(orden==true){
-        cout<<"ORDENADO."<<endl;
-    }
-    else{
-        cout<<"DESORDENADO."<<endl;
-    }
+    cout<<"POSICION 1: "<<v[0]<<endl;
+    cout<<"POSICION 10: "<<v[9]<<endl;
 
     return 0;
 }

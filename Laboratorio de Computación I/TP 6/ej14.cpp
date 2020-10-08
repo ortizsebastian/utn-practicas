@@ -1,3 +1,11 @@
+/*
+14) Dadas dos listas de 10 números cada una y sin números repetidos, cargarlas en dos
+vectores. Generar un tercer vector que contenga solamente aquellos elementos que están
+repetidos en ambos vectores.
+Ejemplo: Vector 1: 8, 10, -3, 5, 7. Vector 2: 10, -8, 5, 9, -3.
+Vector 3: 10, -3, 5.
+*/
+
 #include <iostream>
 #include <cstdlib>
 
@@ -34,6 +42,5 @@ int v[cant], v2[cant2];
                 }
             }
         }
-
     return 0;
 }

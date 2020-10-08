@@ -1,26 +1,41 @@
+/*
+7) Dada una lista de 10 números cargarlos en un vector. Luego ingresar un número e
+informar el primer índice donde ese número aparece en el vector. En caso de no aparecer se
+mostrará el valor índice igual a -1.
+*/
+
 #include <iostream>
 #include <cstdlib>
 
 using namespace std;
 
 int main(){
-const int cant=10;
-int v[cant];
 
-        int n, cont=0;
+int v[10], n, y=0;
 
-        cout<<'\t'<<"INGRESAR "<<cant<<" NUMEROS."<<endl;
-        for(int i=0; i<cant; i++){
-                cin>>v[i];
-        }
-        cout<<"INGRESAR UN NUMERO: "<<'\t';
-        cin>>n;
-        for(int x=0; x<cant; x++){
-                if(v[x]==n){
-                    cont++;
-                }
-        }
-        cout<<"EL NUMERO INGRESADO SE ENCUENTRA "<<cont<<" DENTRO DEL VECTOR"<<endl;
+    for(int i=0; i<10; i++)
+    {
+        cout<<"INGRESAR NUMERO:"<<endl;
+        cin>>v[i];
+    }
+    cout<<endl;
+    cout<<"INGRESE UN NUMERO: "<<'\t';
+    cin>>n;
+
+    int pos=0;
+    for(int x=0; x<10; x++)
+    {
+        pos++;
+        if(v[x]==n) y=pos;
+    }
+    if(y==0)
+    {
+        cout<<"VALOR INDICE -1"<<endl;
+    }
+    else
+    {
+        cout<<"NUMERO "<<n<<" INDICE "<<pos-1<<endl;
+    }
 
     return 0;
 }

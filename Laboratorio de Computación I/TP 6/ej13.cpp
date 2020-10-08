@@ -1,3 +1,9 @@
+/*
+13) Dada una lista de 10 números cargarlos en un vector. Luego ingresar dos números a y b
+menores a 10. Determinar e informar cual es el valor máximo en el vector considerando los
+elementos que están entre las posiciones a y b
+*/
+
 #include <iostream>
 #include <cstdlib>
 
@@ -27,7 +33,5 @@ int v[cant];
         for(int x=0; x<cant; x++){
             if(v[x]==nMax) cout<<"NUMERO MAXIMO DEL VECTOR: "<<v[x]<< " POSICION: "<<x+1<<endl;
         }
-
-
     return 0;
 }
