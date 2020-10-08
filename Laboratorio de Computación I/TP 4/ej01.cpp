@@ -15,7 +15,6 @@ int main()
 
     while(c<20)
     {
-
         cout << c << endl;
         c=c+3;
     }
