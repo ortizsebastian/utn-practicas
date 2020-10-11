@@ -9,7 +9,7 @@ de números primos que aparecen en el vector
 using namespace std;
 
     int main(){
-    const int cant=10;
+    const int cant=5;
     int v[cant];
 
     int primos=0;
