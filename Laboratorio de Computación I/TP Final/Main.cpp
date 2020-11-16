@@ -7,7 +7,6 @@ using namespace std;
 
 #include "1_ Un Jugador.h"
 #include "2_ Dos Jugadores.h"
-#include "3_ Puntuaciones.h"
 #include "4_ Carga Manual.h"
 #include "menu.h"
 
@@ -51,7 +50,7 @@ int main(){
 
             system("cls");
             cout<<"** [ MODO DE UN JUGADOR ] **"<<endl<<endl;
-            if(pTotales1!=0){
+            if(pTotales!=0){
             cout<<"MAYOR PUNTAJE OBTENIDO EN ESTA SESION: "<<pTotales<<endl;
             cout<<"*** NOMBRE: "<<'\t';
             mostrarNombre(vec1);

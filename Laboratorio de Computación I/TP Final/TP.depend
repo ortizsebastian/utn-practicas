@@ -127,3 +127,35 @@
 
 1605315553 c:\users\sebas\desktop\tp\soporte.h
 
+1605533010 source:c:\users\sebas\documents\github\utn\laboratorio de computación i\tp final\main.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<ctime>
+	"1_ Un Jugador.h"
+	"2_ Dos Jugadores.h"
+	"4_ Carga Manual.h"
+	"menu.h"
+
+1605532979 c:\users\sebas\documents\github\utn\laboratorio de computación i\tp final\1_ un jugador.h
+	"Funciones Generales.h"
+	"Instrucciones.h"
+
+1605526374 c:\users\sebas\documents\github\utn\laboratorio de computación i\tp final\funciones generales.h
+
+1605365857 c:\users\sebas\documents\github\utn\laboratorio de computación i\tp final\instrucciones.h
+
+1605528665 c:\users\sebas\documents\github\utn\laboratorio de computación i\tp final\2_ dos jugadores.h
+	"Funciones Generales.h"
+	"Instrucciones.h"
+
+1605415447 c:\users\sebas\documents\github\utn\laboratorio de computación i\tp final\4_ carga manual.h
+
+1605315909 c:\users\sebas\documents\github\utn\laboratorio de computación i\tp final\menu.h
+	<windows.h>
+	<stdio.h>
+	<conio.h>
+	"soporte.h"
+
+1605315553 c:\users\sebas\documents\github\utn\laboratorio de computación i\tp final\soporte.h
+

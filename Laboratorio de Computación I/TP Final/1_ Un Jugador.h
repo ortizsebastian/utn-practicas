@@ -60,7 +60,7 @@ int UnJugador(char vec[], int tam, int vec1[], int tam1){
         system("cls");
 
         switch(opc){
-            case 1: if(flag==false){cargarVectorAleatorio(v,t,5); flag=true;}
+            case 1: if(flag==false){cargarAleatorio(v,t,5); flag=true;}
             else cout<<"* OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl<<endl;
             cantTiradas++;
             break;
