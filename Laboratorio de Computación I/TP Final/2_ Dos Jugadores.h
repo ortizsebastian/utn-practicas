@@ -137,7 +137,7 @@ int DosJugadores(char vec[], int tam, int vec1[], int tam1){
     vec1[0]=cantBuncos2;
     }
     else{
-    cout<<'\t'<<" ***  ***** [[      EMPATE !     ] ] *****  ***";;
+    cout<<'\t'<<" ***  ***** [[      EMPATE !     ] ] *****  ***";
     vec1[0]=cantBuncos2;
     }
     cout<<endl<<endl;
