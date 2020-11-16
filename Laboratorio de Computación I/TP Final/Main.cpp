@@ -10,19 +10,16 @@ using namespace std;
 #include "4_ Carga Manual.h"
 #include "menu.h"
 
-/// MODO SIMULADO >> ES DE A UNO O DE A DOS JUGADORES ???
-/// AGREGAR OTROS COLORES, FORMAS Y OTRAS FUENTES AL TEXTO
-/// TESTEAR QUE TODO ANDE BIEN
 
 int main(){
 
     int opc;
     int pTotales=0;
     int pTotales2=0;
-    char vec1[15];
-    char vec2[15];
-    int vecBunco1[0]={};
-    int vecBunco2[0]={};
+    char vec1[15]={};
+    char vec2[15]={};
+    int vecBunco1[0];
+    int vecBunco2[0];
 
 
     while(true){
@@ -59,14 +56,19 @@ int main(){
             else{
                 cout<<"DEBE COMPLETAR UNA PARTIDA EN EL MODO UN JUGADOR PARA PODER VISUALIZAR EL MAYOR PUNTAJE OBTENIDO EN ESTA SECCION"<<endl;
             }
-
             cout<<"** [ MODO DE DOS JUGADORES ] **"<<endl<<endl;
             if(pTotales2!=0){
-            cout<<"MAYOR PUNTAJE OBTENIDO EN ESTA SESION: "<<pTotales2<<endl;
-            cout<<"*** NOMBRE: "<<'\t';
-            mostrarNombre(vec2);
-            cout<<endl;
-            cout<<"CANTIDAD DE BUNCOS OBTENIDOS: "<<vecBunco2[0]<<endl<<endl<<endl;}
+                if(vec2==0){
+                    cout<<"EMPATE EN LA ULTIMA PARTIDA JUGADA"<<endl;
+                }
+                else{
+                    cout<<"MAYOR PUNTAJE OBTENIDO EN ESTA SESION: "<<pTotales2<<endl;
+                    cout<<"*** NOMBRE: "<<'\t';
+                    mostrarNombre(vec2);
+                    cout<<endl;
+                    cout<<"CANTIDAD DE BUNCOS OBTENIDOS: "<<vecBunco2[0]<<endl<<endl<<endl;
+                }
+            }
             else{
                 cout<<"DEBE COMPLETAR UNA PARTIDA EN EL MODO MULTIJUGADOR PARA PODER VISUALIZAR EL MAYOR PUNTAJE OBTENIDO EN ESTA SECCION"<<endl;
             }

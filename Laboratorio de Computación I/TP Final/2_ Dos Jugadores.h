@@ -2,7 +2,7 @@
 #include "Funciones Generales.h"
 #include "Instrucciones.h"
 
-int DosJugadores();
+int DosJugadores(char vec[], int tam, int vec1[], int tam1);
 
 
 int DosJugadores(char vec[], int tam, int vec1[], int tam1){
@@ -137,8 +137,7 @@ int DosJugadores(char vec[], int tam, int vec1[], int tam1){
     vec1[0]=cantBuncos2;
     }
     else{
-    cout<<'\t'<<" ***  ***** [[      EMPATE !     ] ] *****  ***";
-    copiarVectorNombre(vNombre2,vec,tam);
+    cout<<'\t'<<" ***  ***** [[      EMPATE !     ] ] *****  ***";;
     vec1[0]=cantBuncos2;
     }
     cout<<endl<<endl;
