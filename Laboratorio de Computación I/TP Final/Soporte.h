@@ -6,7 +6,7 @@ void Gotoxy(int x,int y){
       dwPos.X = x;
       dwPos.Y= y;
       SetConsoleCursorPosition(hcon,dwPos);
- }
+}
 
 
 void Say(const char *txt)
@@ -23,11 +23,6 @@ void Say(int x,int y,const char *txt)
 {
 	Gotoxy(x,y);printf("%s",txt);
 }
-
-
-
-
-
 
 
 void Say(int x,int y,int ascii)//ascii
