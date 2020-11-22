@@ -19,26 +19,27 @@ void Puntuaciones(char VecNombre[], char VecNombre_1[], char VecNombre_2[], int 
     if(PuntosGanador!=0){
         cout<<"MAYOR PUNTAJE OBTENIDO EN ESTA SESION: "<<PuntosGanador<<endl;
         cout<<"*** NOMBRE: "<<'\t';
-        if(CantBuncos_1!=0&&CantBuncos_2==0){
+        if(CantBuncos_1!=0&&VecNombre_1!=0&&CantBuncos_2==0&&VecNombre_2==0){
             MostrarNombre(VecNombre_1);
             cout<<endl;
             cout<<"CANTIDAD DE BUNCOS OBTENIDOS: "<<CantBuncos_1<<endl<<endl<<endl;
         }
-        else if(CantBuncos_2!=0&&CantBuncos_1==0){
+        else if(CantBuncos_2!=0&&VecNombre_2!=0&&CantBuncos_1==0&&VecNombre_1==0){
             MostrarNombre(VecNombre_2);
             cout<<endl;
             cout<<"CANTIDAD DE BUNCOS OBTENIDOS: "<<CantBuncos_2<<endl<<endl<<endl;
         }
         else{
-            cout<<"***  EMPATE ENTRE LOS JUGADORES 1 y 2  ***"<<endl<<endl;
+            cout<<"***  EMPATE ENTRE EL JUGADOR 1 y 2  ***"<<endl<<endl;
             cout<<" JUGADOR 1:"<<'\t';
             MostrarNombre(VecNombre_1);
             cout<<endl;
-            cout<<"CANTIDAD DE BUNCOS OBTENIDOS: "<<CantBuncos_1<<endl<<endl<<endl;
             cout<<" JUGADOR 2:"<<'\t';
             MostrarNombre(VecNombre_2);
-            cout<<endl;
-            cout<<"CANTIDAD DE BUNCOS OBTENIDOS: "<<CantBuncos_2<<endl<<endl<<endl;
+            cout<<endl<<endl;
+            cout<<" -- AMBOS JUGADORES OBTUVIERON: "<<endl;
+            cout<<"CANTIDAD DE BUNCOS: "<<CantBuncos_2<<endl<<endl;
+            cout<<"PUNTUACION TOTAL: "<<PuntosGanador<<endl<<endl<<endl;
         }
     }
     else{
