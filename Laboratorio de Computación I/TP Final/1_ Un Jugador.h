@@ -32,7 +32,7 @@ int UnJugador(char VecNombre[], int Tam, int CantBuncos){
     CargarNombre(Nombre);
 
     do{
-        system("cls");
+        cls();
         cout<<'\t'<<" ** PARTIDA EN MODO SOLITARIO **"<<endl;
         cout<<endl<<endl<<endl;
         cout<<'\t'<<" || RONDA ACTUAL: "<<Ronda<<" ||"<<endl;
@@ -54,7 +54,7 @@ int UnJugador(char VecNombre[], int Tam, int CantBuncos){
         cout<<endl;
         cout<<"** INGRESAR OPCION PARA CONTINUAR: ";
         cin>>Op;
-        system("cls");
+        cls();
 
         switch(Op){
             case 1: /// Genera numeros aleatorios para los dados.
@@ -95,7 +95,7 @@ int UnJugador(char VecNombre[], int Tam, int CantBuncos){
 
         if(PuntosRonda>=21){
             system("pause");
-            system("cls");
+            cls();
             Ronda++;
             PuntosRonda=0;
             AnalisisUnJugador(Nombre, Ronda, Buncos, CantFallidas, CantTiradas, PuntosTotales);
@@ -106,7 +106,7 @@ int UnJugador(char VecNombre[], int Tam, int CantBuncos){
 
     /// Fin de la partida con las estadisticas finales del juego.
 
-    system("cls");
+    cls();
     cout<<" ** CANTIDAD DE RONDAS TOTALES FINALIZADAS ** "<<endl<<endl<<endl;
     cout<<" ==> JUGADOR: ";
     MostrarNombre(Nombre);

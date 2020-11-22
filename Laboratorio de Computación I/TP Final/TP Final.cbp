@@ -40,6 +40,7 @@
 		<Unit filename="Funciones Generales.h" />
 		<Unit filename="Instrucciones.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="rlutil.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

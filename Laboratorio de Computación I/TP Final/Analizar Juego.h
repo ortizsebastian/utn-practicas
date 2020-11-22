@@ -101,7 +101,6 @@ int Escalera(int Dados[], int T){
 
 void AnalisisDosJugadores(int Turno, int Ronda, char Nombre_1[], int PuntosTotales_1, int Buncos_1, char Nombre_2[], int PuntosTotales_2, int Buncos_2){
 
-    system("cls");
     cout<<endl<<endl;
     cout<<'\t'<<" ** RONDA ACTUAL: "<<Ronda<<" **"<<endl;
     cout<<endl;
@@ -123,7 +122,6 @@ void AnalisisDosJugadores(int Turno, int Ronda, char Nombre_1[], int PuntosTotal
     cout<<'\t'<<" BUNCOS: "<<Buncos_2<<endl<<endl<<endl;
 
     system("pause");
-    system("cls");
 }
 
 

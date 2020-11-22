@@ -12,7 +12,7 @@ void Puntuaciones(char VecNombre[], char VecNombre_1[], char VecNombre_2[], int 
         cout<<"CANTIDAD DE BUNCOS OBTENIDOS: "<<CantBuncos<<endl<<endl<<endl;
     }
     else{
-        cout<<"DEBE COMPLETAR UNA PARTIDA EN EL MODO UN JUGADOR PARA PODER VISUALIZAR EL MAYOR PUNTAJE OBTENIDO EN ESTA SECCION."<<endl<<endl<<endl;
+        cout<<" DEBE COMPLETAR UNA PARTIDA EN EL MODO UN JUGADOR PARA PODER VISUALIZAR EL MAYOR PUNTAJE OBTENIDO EN ESTA SECCION."<<endl<<endl<<endl;
     }
 
     cout<<"** [ MODO DE DOS JUGADORES ] **"<<endl<<endl;
@@ -43,6 +43,6 @@ void Puntuaciones(char VecNombre[], char VecNombre_1[], char VecNombre_2[], int 
         }
     }
     else{
-        cout<<"DEBE COMPLETAR UNA PARTIDA EN EL MODO MULTIJUGADOR PARA PODER VISUALIZAR EL MAYOR PUNTAJE OBTENIDO EN ESTA SECCION."<<endl<<endl<<endl;
+        cout<<" DEBE COMPLETAR UNA PARTIDA EN EL MODO MULTIJUGADOR PARA PODER VISUALIZAR EL MAYOR PUNTAJE OBTENIDO EN ESTA SECCION."<<endl<<endl<<endl;
     }
 }

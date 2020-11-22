@@ -46,7 +46,7 @@ int DosJugadores(char VecNombre_1[], char VecNombre_2[], int Tam, int CantBuncos
     do{
         /// Jugador inicial.
 
-        system("cls");
+        cls();
         cout<<'\t'<<" ** PARTIDA MODO MULTIJUGADOR **"<<endl<<endl<<endl;
         cout<<'\t'<<" || RONDA ACTUAL: "<<Ronda<<" ||"<<endl;
         cout<<endl<<endl;
@@ -67,7 +67,7 @@ int DosJugadores(char VecNombre_1[], char VecNombre_2[], int Tam, int CantBuncos
 
         cout<<"** INGRESAR OPCION PARA CONTINUAR: ";
         cin>>Op;
-        system("cls");
+        cls();
 
         switch(Op){
             case 1:
@@ -127,7 +127,7 @@ int DosJugadores(char VecNombre_1[], char VecNombre_2[], int Tam, int CantBuncos
 
                 if(Ant!=Turno){
                     system("pause");
-                    system("cls");
+                    cls();
                     AnalisisDosJugadores(Turno, Ronda, Nombre_1, PuntosTotales_1, Buncos_1, Nombre_2, PuntosTotales_2, Buncos_2);
                 }
             }
@@ -147,7 +147,7 @@ int DosJugadores(char VecNombre_1[], char VecNombre_2[], int Tam, int CantBuncos
         system("pause");
     }
     while(Ronda<=6);
-    system("cls");
+    cls();
 
     /// Fin de la partida y carga de los vectores y variables con los parametros necesarios para la seccion de Puntajes.
 

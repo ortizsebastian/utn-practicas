@@ -5,6 +5,10 @@
 
 using namespace std;
 
+#include "rlutil.h"
+
+using namespace rlutil;
+
 #include "1_ Un Jugador.h"
 #include "2_ Dos Jugadores.h"
 #include "3_ Puntuaciones.h"
@@ -12,6 +16,9 @@ using namespace std;
 
 
 int main(){
+
+    setColor(WHITE);
+    hidecursor();
 
     int Op;
 
@@ -23,14 +30,14 @@ int main(){
     char VecNombre[T]={};
     char VecNombre_1[T]={};
     char VecNombre_2[T]={};
-    int CantBuncos;
-    int CantBuncos_1;
-    int CantBuncos_2;
+    int CantBuncos=0;
+    int CantBuncos_1=0;
+    int CantBuncos_2=0;
 
     /// Menu principal del programa.
 
     while(true){
-        system("cls");
+        cls();
         cout<<endl;
         cout<<'\t'<<"*****  MENU PRINCIPAL  *****"<<endl<<endl;
         cout<<'\t'<<" JUEGO DE DADOS BUNCO !! ";
@@ -44,7 +51,7 @@ int main(){
         cout<<endl;
         cout<<" INGRESAR OPCION PARA CONTINUAR: ";
         cin>>Op;
-        system("cls");
+        cls();
         switch(Op){
         case 1: Puntos=UnJugador(VecNombre, T, CantBuncos); /// Le envio los parametros y le pido el retorno que necesito para Mostrar puntuacion mas alta.
             break;

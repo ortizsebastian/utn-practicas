@@ -24,7 +24,7 @@ int ModoSimulado(){
     CargarNombre(Nombre);
 
     do{
-        system("cls");
+        cls();
         cout<<'\t'<<" ** PARTIDA EN MODO SOLITARIO **"<<endl;
         cout<<endl<<endl<<endl;
         cout<<'\t'<<" || RONDA ACTUAL: "<<Ronda<<" ||"<<endl;
@@ -44,7 +44,7 @@ int ModoSimulado(){
         cout<<endl;
         cout<<"** INGRESAR OPCION PARA CONTINUAR: ";
         cin>>Op;
-        system("cls");
+        cls();
 
         switch(Op){
             case 1: /// Carga manual del vector dados.
@@ -82,7 +82,7 @@ int ModoSimulado(){
         }
         if(PuntosRonda>=21){
             system("pause");
-            system("cls");
+            cls();
             Ronda++;
             PuntosRonda=0;
             AnalisisUnJugador(Nombre, Ronda, Buncos, CantFallidas, CantTiradas, PuntosTotales);
@@ -90,7 +90,7 @@ int ModoSimulado(){
         system("pause");
     }
     while(Ronda<=6);
-    system("cls");
+    cls();
 
     cout<<" ******* SISTEMA SIMULADO *******"<<endl;
     cout<<" ** CANTIDAD DE RONDAS TOTALES FINALIZADAS ** "<<endl<<endl<<endl;

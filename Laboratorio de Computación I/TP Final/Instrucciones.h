@@ -8,7 +8,7 @@
 
 void Instrucciones(){
 
-    setlocale(LC_ALL, ""); /// Permite usar distintos tipos de caracteres que no pertenecen al estandar que se puede imprimir normalmente.
+    setlocale(LC_ALL, "Spanish"); /// Permite usar distintos tipos de caracteres que no pertenecen al estandar que se puede imprimir normalmente.
 
     cout<<'\t'<<"** REGLAMENTO DEL JUEGO **"<<endl<<endl<<endl;
 
