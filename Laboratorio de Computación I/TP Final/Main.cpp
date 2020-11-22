@@ -11,8 +11,6 @@ using namespace std;
 #include "4_ Modo Simulado.h"
 
 
-/// TESTEAR TODOS LOS MODOS.
-
 int main(){
 
     int Op;
