@@ -1,114 +1,140 @@
-
 #include "Funciones Generales.h"
 #include "Instrucciones.h"
 
-int DosJugadores(char vec[], int tam, int vec1[], int tam1);
 
+int DosJugadores(char VecNombre_1[], char VecNombre_2[], int Tam, int CantBuncos_1, int CantBuncos_2){
 
-int DosJugadores(char vec[], int tam, int vec1[], int tam1){
-    int opc;
-    int const t=3;
-    int v[t];
-    int ronda=1;
-    char vNombre1[15];
-    char vNombre2[15];
-    bool flag1=false;
-    bool flag2=false;
-    bool flag3=false;
-    bool indicador=false;
-    int pAcum1=0;
-    int pAcum2=0;
-    int p1Ronda=0;
-    int p2Ronda=0;
-    int pTotales1=0;
-    int pTotales2=0;
-    int cantBuncos1=0;
-    int cantBuncos2=0;
-    int x=1;
+    /// Declaro vector dados, vectores nombres, Op (Opciones del switch), ronda y turno inicial en 1.
+
+    int Op;
+    int const T=3;
+    int Dados[T];
+    int Ronda=1;
+    int Turno=1;
+    int Ant;
+    char Nombre_1[Tam];
+    char Nombre_2[Tam];
+
+    /// Contadores y Acumuladores para las tiradas y puntos.
+
+    int PuntosTirada_1=0;
+    int PuntosTirada_2=0;
+    int PuntosRonda_1=0;
+    int PuntosRonda_2=0;
+    int PuntosTotales_1=0;
+    int PuntosTotales_2=0;
+    int Buncos_1=0;
+    int Buncos_2=0;
+
+    /// Banderas para mostrar o no partes del menu.
+
+    bool X=false;
+    bool Y=false;
+    bool Z=false;
+
+    /// Bandera para saber si ya jugo o no el segundo jugador.
+
+    bool Flag=false;
 
     cout<<endl;
     cout<<" INGRESAR NOMBRE DEL JUGADOR 1:  ";
-    cargarNombre(vNombre1);
+    CargarNombre(Nombre_1);
     cout<<endl<<endl;
     cout<<" INGRESAR NOMBRE DEL JUGADOR 2:  ";
-    cargarNombre(vNombre2);
+    CargarNombre(Nombre_2);
 
-    while(ronda<=6){
+    do{
+        /// Jugador inicial.
+
         system("cls");
-        cout<<'\t'<<" ** PARTIDA PARA DOS JUGADORES **"<<endl<<endl<<endl;
-        cout<<" ==> TURNO DEL JUGADOR NUMERO: "<<x<<"   ";
-        if(x==1) mostrarNombre(vNombre1);
-        else mostrarNombre(vNombre2);
-        cout<<endl<<endl<<endl;
+        cout<<'\t'<<" ** PARTIDA MODO MULTIJUGADOR **"<<endl<<endl<<endl;
+        cout<<'\t'<<" || RONDA ACTUAL: "<<Ronda<<" ||"<<endl;
+        cout<<endl<<endl;
+        cout<<" TURNO ACTUAL DE ";
+        if(Turno==1) MostrarNombre(Nombre_1);
+        else MostrarNombre(Nombre_2);
+        cout<<endl<<endl;
 
-        cout<<'\t'<<" || RONDA ACTUAL: "<<ronda<<" ||"<<endl;
-        cout<<endl<<endl<<endl;
+        /// Menu de juego.
 
-        if(flag1==false) cout<<" 1. REALIZAR TIRADA."<<endl;
-        if(flag1==true)  cout<<" 2. MOSTRAR DADOS."<<endl;
-        if(flag1==true)  cout<<" 3. ANALICE SU TIRADA PARA PODER CONTINUAR."<<endl;
+        Ant=Turno;
+        if(X==false) cout<<" 1. REALIZAR TIRADA."<<endl;
+        if(X==true)  cout<<" 2. MOSTRAR DADOS."<<endl;
+        if(X==true)  cout<<" 3. ANALICE SU TIRADA PARA PODER CONTINUAR."<<endl;
         cout<<" 4. INSTRUCCIONES."<<endl;
         cout<<" 0. VOLVER AL MENU PRINCIPAL.";
-
         cout<<endl<<endl<<endl<<endl;
 
-        if(x==1&&flag2==true) cout<<" => PUNTOS ACUMULADOS DE LA RONDA DEL JUGADOR 1: "<<p1Ronda<<endl<<endl;
-        if(x==1&&flag2==true) cout<<" => CANTIDAD DE BUNCOS OBTENIDOS: "<<cantBuncos1<<endl<<endl<<endl;
-        if(x==2&&flag3==true) cout<<" => PUNTOS ACUMULADOS DE LA RONDA DEL JUGADOR 2: "<<p2Ronda<<endl<<endl;
-        if(x==2&&flag3==true) cout<<" => CANTIDAD DE BUNCOS OBTENIDOS: "<<cantBuncos2<<endl<<endl<<endl;
-
-        cout<<endl;
         cout<<"** INGRESAR OPCION PARA CONTINUAR: ";
-        cin>>opc;
+        cin>>Op;
         system("cls");
 
-        switch(opc){
+        switch(Op){
             case 1:
-            if(flag1==false){cargarAleatorio(v,t,5); flag1=true;}
+            if(X==false){CargarAleatorio(Dados, T, 5); X=true;}
             else cout<<"* OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl<<endl;
             break;
 
             case 2:
-            if(flag1==true) mostrarVector(v,t);
+            if(X==true) MostrarVector(Dados, T);
             else cout<<"* OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl<<endl;
             break;
 
             case 3:
-            if(flag1==true){
-            if(flag2==true) flag3==true;
-            flag1=false;
-            flag2=true;
 
-            if(x==1){
-                pAcum1=analisisPuntos(v,t,ronda);
-                pTotales1=pTotales1+pAcum1;
-                p1Ronda=p1Ronda+pAcum1;
-            }
-            else{
-                pAcum2=analisisPuntos(v,t,ronda);
-                pTotales2=pTotales2+pAcum2;
-                p2Ronda=p2Ronda+pAcum2;
-                indicador=true;
-            }
+            if(X==true){
+                if(Y==true) Z==true;
+                X=false;
+                Y=true;
 
-            if(x==1&&(p1Ronda>=21||pAcum1==0)) x=2;
-            else if(x==2&&(p2Ronda>=21||pAcum2==0)) x=1;
+                /// Dependiendo el turno realiza el analisis de la tirada y acumula los puntajes por ronda y por totales.
 
-            if(pAcum1==21&&indicador==true&&pAcum2==0){ronda++; indicador=false;}
-            if(p1Ronda>21||p2Ronda>=21){ronda++; indicador=false;}
-            if(pAcum1!=21&&p1Ronda>=21){ronda++; indicador=false;}
+                if(Turno==1){
+                    PuntosTirada_1 = AnalizarTirada(Dados, T, Ronda);
+                    PuntosTotales_1 = PuntosTotales_1 + PuntosTirada_1;
+                    PuntosRonda_1 = PuntosRonda_1 + PuntosTirada_1;
+                    if(PuntosTirada_1==21) Buncos_1++;
 
+                }
+                else{
+                    PuntosTirada_2 = AnalizarTirada(Dados, T, Ronda);
+                    PuntosTotales_2 = PuntosTotales_2 + PuntosTirada_2;
+                    PuntosRonda_2 = PuntosRonda_2 + PuntosTirada_2;
+                    if(PuntosTirada_2==21) Buncos_2++;
+                    Flag=true;
+                }
 
-            if(pAcum1==21) cantBuncos1++;
-            if(p1Ronda>=21) p1Ronda=0;
-            if(pAcum2==21) cantBuncos2++;
-            if(p2Ronda>=21) p2Ronda=0;
+                /// Cambio de turno segun corresponda.
 
+                if(Turno==1 && (PuntosRonda_1>=21 || PuntosTirada_1==0)) Turno=2;
+                else if(Turno==2 && (PuntosRonda_2>=21 || PuntosTirada_2==0)) Turno=1;
+
+                /// Cambio de ronda segun corresponda.
+
+                if(PuntosRonda_1>21 || PuntosRonda_2>=21){ /// Caso del jugador 1 completando la ronda SIN BUNCO y del jugador 2 completando la ronda CON O SIN BUNCO.
+                    Ronda++;
+                    PuntosRonda_1=0;
+                    PuntosRonda_2=0;
+                }
+                if(PuntosTirada_1==21 && PuntosTirada_2==0 && Flag==true){ /// Caso de BUNCO del jugador 1 en la primera tirada.
+                    Ronda++;
+                    Flag=false;
+                    PuntosRonda_1=0;
+                    PuntosRonda_2=0;
+                }
+
+                /// Muestra pantalla con estadisticas del juego entre turnos.
+
+                if(Ant!=Turno){
+                    system("pause");
+                    system("cls");
+                    AnalisisDosJugadores(Turno, Ronda, Nombre_1, PuntosTotales_1, Buncos_1, Nombre_2, PuntosTotales_2, Buncos_2);
+                }
             }
             else cout<<"* OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl<<endl;
             break;
 
-            case 4: instrucciones();
+            case 4: Instrucciones(); /// Reglamento del juego.
             break;
 
             case 0:
@@ -120,42 +146,99 @@ int DosJugadores(char vec[], int tam, int vec1[], int tam1){
         }
         system("pause");
     }
+    while(Ronda<=6);
     system("cls");
+
+    /// Fin de la partida y carga de los vectores y variables con los parametros necesarios para la seccion de Puntajes.
+
     cout<<endl<<endl;
     cout<<'\t'<<"** PARTIDA FINALIZADA ** "<<endl;
     cout<<endl<<endl<<endl;
-    if(pTotales1>pTotales2){
-    cout<<'\t'<<">>=========>> JUGADOR GANADOR: >> ";
-    mostrarNombre(vNombre1);
-    copiarVectorNombre(vNombre1,vec,tam);
-    vec1[0]=cantBuncos1;
+
+    /// Ganador jugador 1.
+
+    if(PuntosTotales_1>PuntosTotales_2){
+        cout<<'\t'<<">>=========>> JUGADOR GANADOR: >> ";
+        MostrarNombre(Nombre_1);
+
+
+        CopiarVectorNombre(Nombre_1, VecNombre_1, Tam);
+        CantBuncos_1=Buncos_1;
+        MostrarNombre(Nombre_2);
+
+        CopiarVectorNombre(Nombre_2, VecNombre_2, Tam);
+        CantBuncos_2=Buncos_2;
     }
-    else if(pTotales1<pTotales2){
-    cout<<'\t'<<">>=========>> JUGADOR GANADOR: >> ";
-    mostrarNombre(vNombre2);
-    copiarVectorNombre(vNombre2,vec,tam);
-    vec1[0]=cantBuncos2;
+    else if(PuntosTotales_1==PuntosTotales_2 && Buncos_1>Buncos_2){
+        cout<<'\t'<<">>=========>> JUGADOR GANADOR: >> ";
+        MostrarNombre(Nombre_1);
+
+
+        CopiarVectorNombre(Nombre_1, VecNombre_1, Tam);
+        CantBuncos_1=Buncos_1;
+        MostrarNombre(Nombre_2);
+
+        CopiarVectorNombre(Nombre_2, VecNombre_2, Tam);
+        CantBuncos_2=Buncos_2;
     }
+
+    /// Ganador jugador 2.
+
+    else if(PuntosTotales_1<PuntosTotales_2){
+        cout<<'\t'<<">>=========>> JUGADOR GANADOR: >> ";
+        MostrarNombre(Nombre_2);
+
+
+        CopiarVectorNombre(Nombre_1, VecNombre_1, Tam);
+        CantBuncos_1=Buncos_1;
+        MostrarNombre(Nombre_2);
+
+        CopiarVectorNombre(Nombre_2, VecNombre_2, Tam);
+        CantBuncos_2=Buncos_2;
+    }
+    else if(PuntosTotales_1==PuntosTotales_2 && Buncos_1<Buncos_2){
+        cout<<'\t'<<">>=========>> JUGADOR GANADOR: >> ";
+        MostrarNombre(Nombre_2);
+
+
+        CopiarVectorNombre(Nombre_1, VecNombre_1, Tam);
+        CantBuncos_1=Buncos_1;
+        MostrarNombre(Nombre_2);
+
+        CopiarVectorNombre(Nombre_2, VecNombre_2, Tam);
+        CantBuncos_2=Buncos_2;
+    }
+
+    /// Empate.
+
     else{
-    cout<<'\t'<<" ***  ***** [[      EMPATE !     ] ] *****  ***";
-    vec1[0]=cantBuncos2;
+        cout<<'\t'<<">>=========>> EMPATE !! >> ";
+
+        CopiarVectorNombre(Nombre_1, VecNombre_1, Tam);
+        CantBuncos_1=Buncos_1;
+
+        CopiarVectorNombre(Nombre_2, VecNombre_2, Tam);
+        CantBuncos_2=Buncos_2;
     }
+
+    /// Estadisticas de la partida.
+
     cout<<endl<<endl;
     cout<<'\t'<<"  | | || ESTADISTICAS DE LA PARTIDA || | |  "<<endl;
     cout<<endl<<endl;
     cout<<" ==> JUGADOR: 1 ";
-    mostrarNombre(vNombre1);
+    MostrarNombre(Nombre_1);
     cout<<endl<<endl;
-    cout<<" CANTIDAD DE BUNCOS OBTENIDOS: "<<cantBuncos1<<endl<<endl;
-    cout<<" PUNTAJE TOTAL OBTENIDO: "<<pTotales1<<endl;
+    cout<<" CANTIDAD DE BUNCOS OBTENIDOS: "<<Buncos_1<<endl<<endl;
+    cout<<" PUNTAJE TOTAL OBTENIDO: "<<PuntosTotales_1<<endl;
     cout<<endl<<endl;
     cout<<" ==> JUGADOR: 2 ";
-    mostrarNombre(vNombre2);
+    MostrarNombre(Nombre_2);
     cout<<endl;
-    cout<<" CANTIDAD DE BUNCOS OBTENIDOS: "<<cantBuncos2<<endl<<endl;
-    cout<<" PUNTAJE TOTAL OBTENIDO: "<<pTotales2<<endl;
+    cout<<" CANTIDAD DE BUNCOS OBTENIDOS: "<<Buncos_2<<endl<<endl;
+    cout<<" PUNTAJE TOTAL OBTENIDO: "<<PuntosTotales_2<<endl;
     cout<<endl<<endl;
-    if(pTotales1>pTotales2) return pTotales1;
-    else return pTotales2;
 
+    if(PuntosTotales_1>PuntosTotales_2) return PuntosTotales_1;
+    else return PuntosTotales_2;
 }

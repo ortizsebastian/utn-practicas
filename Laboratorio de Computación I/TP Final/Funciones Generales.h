@@ -1,165 +1,104 @@
 #ifndef FUNCIONES_GENERALES_H_INCLUDED
 #define FUNCIONES_GENERALES_H_INCLUDED
 
-void mostrarVector(int v[], int tam);
+void MostrarVector(int V[], int Tam); /// Muestra el vector del tipo entero.
 
-void cargarNombre(char v[]);
+void CargarNombre(char V[]); /// Carga el vector del tipo char.
 
-void mostrarNombre(char v[]);
+void MostrarNombre(char V[]); /// Muestra el vector del tipo char.
 
-void cargarVector(int v[], int tam);
+void CargarVector(int V[], int Tam); /// Carga el vector del tipo entero.
 
-int contarNumerosRepetidos(int v[], int numero , int tam); /// Cuenta la cantidad de veces que se repite un número en el vector.
+int ContarNumerosRepetidos(int V[], int Numero , int Tam); /// Cuenta la cantidad de veces que se repite un número en el vector.
 
-int maximoVector(int v[], int tam); /// Devuelve  la posición (primera) que ocupa el máximo en el vector.
+int MaximoVector(int V[], int Tam); /// Devuelve  la posición (primera) que ocupa el máximo en el vector.
 
-int minimoVector(int v[], int tam); /// Devuelve  la posición (primera) que ocupa el mínimo en el vector.
+void CargarAleatorio(int V[], int Tam, int Limite); /// Asigna valores aleatorios al vector.
 
-void cargarAleatorio(int v[], int tam, int limite); /// Asigna valores aleatorios al vector.
+void OrdenarVector(int V[], int Tam); /// Ordena de menor a mayor un vector.
 
-void ordenarVector(int v[], int tam); /// Ordena de menor a mayor un vector.
+int SumarVector(int V[], int Tam); /// Suma los valores contenidos en el vector.
 
-int sumarVector(int v[], int tam); /// Suma los valores contenidos en el vector.
-
-void copiarVector(int v[], int v2[],int tam); /// Copia el vector v en v2.
-
-void copiarVectorNombre(char v[], char v2[], int tam); /// Copia el vector v en v2 para los nombres.
-
-bool compararVectores(int v[], int v2[],int tam); /// Compara los dos vectores que recibe. Si son iguales devuelve true, si no devuelve false.
-
-float calcularPromedio(int v[], int tam); /// Calcula promedio dentro del vector.
-
-int posicionNumeroEnVector(int v[],int tam, int numero); /// Dandole un número busca la posición de dicho número.
+void CopiarVectorNombre(char V[], char V2[], int Tam); /// Copia el vector v en v2 para los nombres.
 
 
 /// Desarrollo de funciones generales.
 
 
-int posicionNumeroEnVector(int v[],int tam, int numero){
-    int i;
-    for(i=0;i<tam;i++){
-    if(v[i]==numero) return i;
+void OrdenarVector(int V[], int Tam ){
+    int PosMin, Aux;
+    for(int I=0;I<Tam-1;I++){
+        PosMin=I;
+        for(int J=I+1;J<Tam;J++){
+        if(V[J]<V[PosMin]) PosMin=J;
+        }
+        Aux=V[I];
+        V[I]=V[PosMin];
+        V[PosMin]=Aux;
     }
-    return -1;
 }
 
-int minimoVector(int v[], int tam){
-    int i, posMin=0;
-    for(i=1;i<tam;i++){
-        if(v[i]<v[posMin]) {
-                posMin=i;
+int MaximoVector(int V[], int Tam){
+    int PosMax=0;
+    for(int I=1;I<Tam;I++){
+        if(V[I]>V[PosMax]) {
+            PosMax=I;
         }
     }
-    return posMin;
+    return PosMax;
 }
 
-void ordenarVector(int v[], int tam ){
-    int i,j, posmin, aux;
-    for(i=0;i<tam-1;i++){
-        posmin=i;
-        for(j=i+1;j<tam;j++){
-        if(v[j]<v[posmin]) posmin=j;
-        }
-        aux=v[i];
-        v[i]=v[posmin];
-        v[posmin]=aux;
-    }
-}
-
-int maximoVector(int v[], int tam){
-    int i, posMax=0;
-    for(i=1;i<tam;i++){
-        if(v[i]>v[posMax]) {
-                posMax=i;
-        }
-    }
-    return posMax;
-}
-
-void cargarAleatorio(int v[], int tam, int limite){
-  int i;
+void CargarAleatorio(int V[], int Tam, int Limite){
   srand(time(NULL));
-    for(i=0; i<tam; i++){
-        v[i]=(rand()%limite)+1;
+    for(int I=0; I<Tam; I++){
+        V[I]=(rand()%Limite)+1;
     }
 }
 
-void mostrarVector(int v[], int tam){
-    int i;
-    for(i=0;i<tam;i++){
-        cout<<v[i]<<"\n";
+void MostrarVector(int V[], int Tam){
+    for(int I=0;I<Tam;I++){
+        cout<<V[I]<<"\n";
     }
     cout<<endl;
 }
 
-int contarNumerosRepetidos(int v[], int numero, int tam){
-    int i, cant=0;
-    for(i=0;i<tam;i++){
-        if(v[i]==numero) cant++;
-        }
-    return cant;
+int ContarNumerosRepetidos(int V[], int Numero, int Tam){
+    int Cant=0;
+    for(int I=0;I<Tam;I++){
+        if(V[I]==Numero) Cant++;
+    }
+    return Cant;
 }
 
-void ponerCero(int v[], int tam){
-    int i;
-    for(i=0;i<tam;i++){
-        v[i]=0;
+int SumarVector(int V[], int Tam ){
+    int Suma=0;
+    for(int I=0;I<Tam;I++){
+        Suma+=V[I];
+    }
+    return Suma;
+}
+
+void CopiarVectorNombre(char V[], char V2[], int Tam ){
+    for(int I=0;I<Tam;I++){
+        V2[I]=V[I];
     }
 }
 
-int sumarVector(int v[], int tam ){
-    int i, suma=0;
-    for(i=0;i<tam;i++){
-        suma+=v[i];
-    }
-    return suma;
-}
-
-void copiarVector(int v[], int v2[],int tam ){
-    int i;
-    for(i=0;i<tam;i++){
-        v2[i]=v[i];
-    }
-}
-
-void copiarVectorNombre(char v[], char v2[], int tam ){
-    int i;
-    for(i=0;i<tam;i++){
-        v2[i]=v[i];
-    }
-}
-
-bool compararVectores(int v[], int v2[],int tam ){
-   int i;
-    for(i=0;i<tam;i++){
-        if(v2[i]!=v[i]) return false;
-    }
-    return true;
-}
-
-void cargarVector(int v[], int tam){
-    int i;
-    for(i=0;i<tam;i++){
+void CargarVector(int V[], int Tam){
+    for(int I=0;I<Tam;I++){
         cout<<"INGRESE NUMERO: ";
-        cin>>v[i];
+        cin>>V[I];
     }
 }
 
-float calcularPromedio(int v[], int tam){
-    int suma;
-    float prom;
-    suma=sumarVector(v,tam);
-    prom=(float)suma/tam;
-    return prom;
+void CargarNombre(char V[]){
+    cin>>V;
 }
 
-void cargarNombre(char v[]){
-    cin>>v;
-}
-
-void mostrarNombre(char v[]){
-    cout<<v<<'\t';
+void MostrarNombre(char V[]){
+    cout<<V<<'\t';
     cout<<endl;
 }
+
 
 #endif // FUNCIONES_GENERALES_H_INCLUDED

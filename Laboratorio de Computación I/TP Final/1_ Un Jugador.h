@@ -1,173 +1,123 @@
-
 #include "Funciones Generales.h"
 #include "Instrucciones.h"
+#include "Analizar Juego.h"
 
-int analisisPuntos(int v[], int t, int ronda);
+int UnJugador(char VecNombre[], int Tam, int CantBuncos){
 
-int calcularBunco(int v[], int t, int ronda);
+    /// Declaro vector dados, vector nombre, Op (Opciones del switch) y Ronda inicial en 1.
 
-int calcularRepetidos(int v[], int t);
+    int const T=3;
+    int Op;
+    int Ronda=1;
+    int Dados[T];
+    char Nombre[Tam];
 
-int calcularSumaDivisible5(int v[], int t);
+    /// Contadores y Acumuladores para las tiradas y puntos.
 
-int calcularEscalera(int v[], int t);
+    int PuntosTirada=0;
+    int PuntosTotales=0;
+    int Buncos=0;
+    int CantFallidas=0;
+    int PuntosRonda=0;
+    int CantTiradas=0;
 
-int calcularCoincidenciaRonda(int v[], int t, int ronda);
+    /// Banderas para mostrar o no partes del menu.
 
+    bool X=false;
+    bool Y=false;
 
-int UnJugador(char vec[], int tam, int vec1[], int tam1){
-    int opc;
-    int const t=3;
-    int v[t];
-    int ronda=1;
-    char vNombre1[15];
-    bool flag=false;
-    bool flag2=false;
-    int puntosAcum=0;
-    int puntosTotales=0;
-    int cantBuncos=0;
-    int cantFallidas=0;
-    int puntosRonda=0;
-    int cantTiradas=0;
+    /// Desarrollo.
 
     cout<<" INGRESE SU NOMBRE: ";
-    cargarNombre(vNombre1);
+    CargarNombre(Nombre);
 
-
-    while(ronda<=6){
+    do{
         system("cls");
         cout<<'\t'<<" ** PARTIDA EN MODO SOLITARIO **"<<endl;
         cout<<endl<<endl<<endl;
-        if(puntosRonda>=21){ronda++; puntosRonda=0;}
-        cout<<'\t'<<" || RONDA ACTUAL: "<<ronda<<" ||"<<endl;
-
+        cout<<'\t'<<" || RONDA ACTUAL: "<<Ronda<<" ||"<<endl;
         cout<<endl<<endl<<endl;
 
-        if(flag==false) cout<<" 1. REALIZAR TIRADA."<<endl;
-        if(flag==true)  cout<<" 2. MOSTRAR DADOS."<<endl;
-        if(flag==true)  cout<<" 3. ANALICE SU TIRADA PARA PODER CONTINUAR."<<endl;
+        /// Menu de juego.
+
+        if(X==false) cout<<" 1. REALIZAR TIRADA."<<endl;
+        if(X==true)  cout<<" 2. MOSTRAR DADOS."<<endl;
+        if(X==true)  cout<<" 3. ANALICE SU TIRADA PARA PODER CONTINUAR."<<endl;
         cout<<" 4. INSTRUCCIONES."<<endl;
         cout<<" 0. VOLVER AL MENU PRINCIPAL.";
 
-        cout<<endl<<endl;
-        if(flag2==true) cout<<" PUNTOS DE LA TIRADA: "<<puntosAcum<<endl<<endl;
-        if(flag2==true) cout<<" CANTIDAD DE BUNCOS OBTENIDOS: "<<cantBuncos<<endl<<endl;
-        if(flag2==true) cout<<" =>> PUNTOS TOTALES DE LA PARTIDA: "<<puntosTotales<<endl<<endl;
+        cout<<endl<<endl<<endl<<endl;
+        if(Y==true) cout<<" =>> PUNTOS TOTALES DE LA RONDA ACTUAL: "<<PuntosRonda<<endl<<endl;
+        if(Y==true) cout<<" =>> CANTIDAD DE BUNCOS OBTENIDOS: "<<Buncos<<endl<<endl;
+        if(Y==true) cout<<" =>> PUNTOS TOTALES ACUMULADOS: "<<PuntosTotales<<endl<<endl;
 
-        cout<<endl<<endl;
+        cout<<endl;
         cout<<"** INGRESAR OPCION PARA CONTINUAR: ";
-        cin>>opc;
+        cin>>Op;
         system("cls");
 
-        switch(opc){
-            case 1: if(flag==false){cargarAleatorio(v,t,5); flag=true;}
-            else cout<<"* OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl<<endl;
-            cantTiradas++;
-            break;
-            case 2: if(flag==true) mostrarVector(v,t);
+        switch(Op){
+            case 1: /// Genera numeros aleatorios para los dados.
+            if(X==false){CargarAleatorio(Dados, T, 5); X=true; CantTiradas++;}
             else cout<<"* OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl<<endl;
             break;
-            case 3: if(flag==true){
-            puntosAcum=analisisPuntos(v,t,ronda);
-            puntosRonda=puntosRonda+puntosAcum;
-            puntosTotales=puntosTotales+puntosAcum;
-            flag=false;
-            flag2=true;
-            if(puntosAcum==21) cantBuncos++;
-            if(puntosAcum==0) cantFallidas=cantFallidas+2;}
 
+            case 2: /// Muestra los numeros aleatorios obtenidos al usuario.
+            if(X==true) MostrarVector(Dados, T);
             else cout<<"* OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl<<endl;
             break;
-            case 4: instrucciones();
+
+            case 3: /// Analiza los puntos obtenidos.
+            if(X==true){
+                PuntosTirada=AnalizarTirada(Dados, T, Ronda);
+                PuntosRonda=PuntosRonda+PuntosTirada;
+                PuntosTotales=PuntosTotales+PuntosTirada;
+                if(PuntosTirada==21) Buncos++;
+                if(PuntosTirada==0) CantFallidas=CantFallidas+2;
+                X=false;
+                Y=true;
+            }
+            else cout<<"* OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl<<endl;
             break;
-            case 0:
+
+            case 4: Instrucciones(); /// Reglamento del juego.
+            break;
+
+            case 0: /// Salir.
             return 0;
             break;
+
             default: cout<<"* OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl;
             break;
         }
+
+        /// Pasaje de ronda y pantalla con estadisticas del juego entre rondas.
+
+        if(PuntosRonda>=21){
+            system("pause");
+            system("cls");
+            Ronda++;
+            PuntosRonda=0;
+            AnalisisUnJugador(Nombre, Ronda, Buncos, CantFallidas, CantTiradas, PuntosTotales);
+        }
         system("pause");
     }
+    while(Ronda<=6);
+
+    /// Fin de la partida con las estadisticas finales del juego.
+
     system("cls");
     cout<<" ** CANTIDAD DE RONDAS TOTALES FINALIZADAS ** "<<endl<<endl<<endl;
     cout<<" ==> JUGADOR: ";
-    mostrarNombre(vNombre1);
+    MostrarNombre(Nombre);
 
     cout<<endl<<endl;
-    puntosTotales=puntosTotales-cantFallidas;
-    vec1[0]=cantBuncos;
-    cout<<" CANTIDAD DE TIRADAS FALLIDAS: "<<cantFallidas<<'\t'<<" CANTIDAD DE BUNCOS OBTENIDOS: "<<cantBuncos<<endl<<endl;
-    cout<<" CANTIDAD DE TIRADAS NECESARIAS PARA COMPLETAR LAS 6 RONDAS >> "<<cantTiradas<<endl<<endl;
-    cout<<" PUNTAJE TOTAL OBTENIDO: "<<puntosTotales<<'\t'<<"* PARTIDA FINALIZADA *"<<endl;
+    PuntosTotales=PuntosTotales-CantFallidas;
+    CantBuncos=Buncos;
+    cout<<" CANTIDAD DE TIRADAS FALLIDAS: "<<CantFallidas<<'\t'<<" CANTIDAD DE BUNCOS OBTENIDOS: "<<Buncos<<endl<<endl;
+    cout<<" CANTIDAD DE TIRADAS NECESARIAS PARA COMPLETAR LAS 6 RONDAS >> "<<CantTiradas<<endl<<endl;
+    cout<<" PUNTAJE TOTAL OBTENIDO: "<<PuntosTotales<<'\t'<<"** PARTIDA FINALIZADA **"<<endl;
     cout<<endl<<endl<<endl;
-    copiarVectorNombre(vNombre1, vec, tam);
-    return puntosTotales;
-}
-
-int analisisPuntos(int v[], int t, int ronda){
-    int puntos[5]={0}, pos;
-
-    puntos[0]=calcularBunco(v,ronda,t);
-    puntos[1]=calcularRepetidos(v,t);
-    puntos[2]=calcularSumaDivisible5(v,t);
-    puntos[3]=calcularEscalera(v,t);
-    puntos[4]=contarNumerosRepetidos(v,ronda,t);
-
-    pos=maximoVector(puntos,5);
-
-    cout<<" RONDA: "<<ronda<<endl<<endl;
-    cout<<" PUNTAJE DE LA TIRADA: "<<puntos[pos]<<endl<<endl;
-    cout<<" SACASTE: ";
-
-    if(puntos[pos]!=0){
-        switch(pos){
-        case 0: cout<<" BUNCO!."<<endl<<endl;
-            break;
-        case 1: cout<<" 3 NUMEROS REPETIDOS DISTINDOS DE LA RONDA!."<<endl<<endl;;
-            break;
-        case 2: cout<<" SUMA DE NUMEROS DIVISIBLES POR 5!."<<endl<<endl;
-            break;
-        case 3: cout<<" ESCALERA!."<<endl<<endl;
-            break;
-        case 4: cout<<" 1 O 2 NUMEROS REPETIDOS IGUAL AL NUMERO DE RONDA!."<<endl<<endl;
-            break;
-        }
-    }
-    else{
-    cout<<"TIRADA FALLIDA."<<endl<<endl;
-    }
-    return puntos[pos];
-}
-
-int calcularBunco(int v[], int ronda, int t){
-    int bunco;
-    bunco=contarNumerosRepetidos(v,ronda,t);
-    if(bunco==3) return 21;
-    return 0;
-}
-
-int calcularRepetidos(int v[], int t){
-    int cant;
-    bool repetidos=false;
-    for(int i=1; i<=6; i++){
-        cant=contarNumerosRepetidos(v,i,t);
-        if(cant==3) repetidos=true;
-    }
-    if(repetidos==true) return 5;
-    return 0;
-}
-
-int calcularSumaDivisible5(int v[], int t){
-    int suma;
-    suma=sumarVector(v,t);
-    if(suma%5==0) return 3;
-    return 0;
-}
-
-int calcularEscalera(int v[], int t){
-    bool ordenados=false;
-    ordenarVector(v,t);
-    if((v[0]==v[1]-1) && (v[1]==v[2]-1)) ordenados=true;
-    if(ordenados==true) return 2;
-    return 0;
+    CopiarVectorNombre(Nombre, VecNombre, Tam);
+    return PuntosTotales;
 }

@@ -7,26 +7,35 @@ using namespace std;
 
 #include "1_ Un Jugador.h"
 #include "2_ Dos Jugadores.h"
-#include "4_ Carga Manual.h"
-#include "menu.h"
+#include "3_ Puntuaciones.h"
+#include "4_ Modo Simulado.h"
 
+
+/// TESTEAR TODOS LOS MODOS.
 
 int main(){
 
-    int opc;
-    int pTotales=0;
-    int pTotales2=0;
-    char vec1[15]={};
-    char vec2[15]={};
-    int vecBunco1[0];
-    int vecBunco2[0];
+    int Op;
 
+    /// Variables y vectores para cargar en UnJugador() y DosJugadores() que despues se mostraran dentro de la funcion Puntuaciones().
+
+    int Puntos=0;
+    int PuntosGanador=0;
+    const int T=15;
+    char VecNombre[T]={};
+    char VecNombre_1[T]={};
+    char VecNombre_2[T]={};
+    int CantBuncos;
+    int CantBuncos_1;
+    int CantBuncos_2;
+
+    /// Menu principal del programa.
 
     while(true){
         system("cls");
         cout<<endl;
         cout<<'\t'<<"*****  MENU PRINCIPAL  *****"<<endl<<endl;
-        cout<<'\t'<<" JUEGO DE DADOS BUNCO! ";
+        cout<<'\t'<<" JUEGO DE DADOS BUNCO !! ";
         cout<<endl<<endl<<endl;
         cout<<" 1. JUEGO NUEVO PARA UN JUGADOR."<<endl;
         cout<<" 2. JUEGO NUEVO PARA DOS JUGADORES."<<endl;
@@ -36,54 +45,23 @@ int main(){
         cout<<endl;
         cout<<endl;
         cout<<" INGRESAR OPCION PARA CONTINUAR: ";
-        cin>>opc;
+        cin>>Op;
         system("cls");
-        switch(opc){
-        case 1: pTotales=UnJugador(vec1, 15, vecBunco1, 0);
+        switch(Op){
+        case 1: Puntos=UnJugador(VecNombre, T, CantBuncos); /// Le envio los parametros y le pido el retorno que necesito para Mostrar puntuacion mas alta.
             break;
-        case 2: pTotales2=DosJugadores(vec2, 15, vecBunco2, 0);
+        case 2: PuntosGanador=DosJugadores(VecNombre_1, VecNombre_2, T, CantBuncos_1, CantBuncos_2); /// Le envio los parametros y le pido el retorno que necesito para Mostrar puntuacion mas alta.
             break;
-        case 3:
-
-            system("cls");
-            cout<<"** [ MODO DE UN JUGADOR ] **"<<endl<<endl;
-            if(pTotales!=0){
-            cout<<"MAYOR PUNTAJE OBTENIDO EN ESTA SESION: "<<pTotales<<endl;
-            cout<<"*** NOMBRE: "<<'\t';
-            mostrarNombre(vec1);
-            cout<<endl;
-            cout<<"CANTIDAD DE BUNCOS OBTENIDOS: "<<vecBunco1[0]<<endl<<endl<<endl;}
-            else{
-                cout<<"DEBE COMPLETAR UNA PARTIDA EN EL MODO UN JUGADOR PARA PODER VISUALIZAR EL MAYOR PUNTAJE OBTENIDO EN ESTA SECCION"<<endl;
-            }
-            cout<<"** [ MODO DE DOS JUGADORES ] **"<<endl<<endl;
-            if(pTotales2!=0){
-                if(vec2==0){
-                    cout<<"EMPATE EN LA ULTIMA PARTIDA JUGADA"<<endl;
-                }
-                else{
-                    cout<<"MAYOR PUNTAJE OBTENIDO EN ESTA SESION: "<<pTotales2<<endl;
-                    cout<<"*** NOMBRE: "<<'\t';
-                    mostrarNombre(vec2);
-                    cout<<endl;
-                    cout<<"CANTIDAD DE BUNCOS OBTENIDOS: "<<vecBunco2[0]<<endl<<endl<<endl;
-                }
-            }
-            else{
-                cout<<"DEBE COMPLETAR UNA PARTIDA EN EL MODO MULTIJUGADOR PARA PODER VISUALIZAR EL MAYOR PUNTAJE OBTENIDO EN ESTA SECCION"<<endl;
-            }
-
+        case 3: Puntuaciones(VecNombre, VecNombre_1, VecNombre_2, CantBuncos, CantBuncos_1, CantBuncos_2, PuntosGanador, Puntos); /// Le envio todos las variables y vectores para poder mostrarlos o no por pantalla.
             break;
-        case 4: CargaManual();
+        case 4: ModoSimulado(); /// Misma funcion que UnJugador pero con carga manual del vector dados.
             break;
         case 0: cout<<" FIN DEL PROGRAMA."<<endl;
             return 0;
             break;
-        default:cout<<" OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl;
+        default: cout<<" OPCION INCORRECTA, SELECCIONE UNA OPCION VALIDA: "<<endl;
             break;
         }
         system("pause");
     }
 }
-
-
