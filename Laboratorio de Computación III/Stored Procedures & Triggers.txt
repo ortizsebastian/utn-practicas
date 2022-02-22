@@ -1,0 +1,71 @@
+Stored Procedures
+
+CREATE/ALTER PROCEDURE SP_NOMBRE (
+	@PARAMETRO1,
+	@PARAMETRO2
+)
+AS
+BEGIN
+	DECLARE @VARIABLE <TIPO_DATO> (Variables locales) 
+	SELECT @Var1 = X. @Var2 = Y FROM <Tabla> (Para setearle valores a la variable creada anteriormente)
+	
+	BEGIN TRY
+	END TRY
+	BEGIN CATCH
+	END CATCH
+
+
+	IF <CONDICION> BEGIN
+	END
+	ELSE BEGIN
+	END
+END
+
+
+EXEC SP_NOMBRE PARAMETRO1, PARAMETRO2
+DROP PROCEDURE SP_NOMBRE
+
+@@IDENTITY (Ultimo ID generado de la Query anterior)
+@@ERROR (Muestra codigo de error generado en la Query anterior)
+@@ROWCOUNT (Conteo de columnas modificadas/seleccionadas por Query anterior)
+
+
+*Transact se usa dentro de un bloque Try Catch
+BEGIN TRANSACTION (Usarlo dentro de un Try)
+COMMIT TRANSACTION
+
+ROLLBACK TRANSACTION (Usarlo dentro de un Catch)
+
+En caso de tener que ejecutar necesitar ejecutar un solo Rollback
+	IF @@TRANCOUNT > 0 BEGIN (Rollback setea TRANCOUNT en 0, y por cada Begin Transact +1 y Commit Transact -1 a la variable)
+	END
+
+
+
+
+TRIGGERS 
+	*Los Triggers nos permiten ejecutar una serie de comandos de manera automática cuando ocurra algún tipo de acción en la base de datos
+	*Combinar con Transacciones para que, en caso de error, no se ejecute tampoco la acción que llamo al Trigger
+
+
+CREATE TRIGGER <TR_NOMBRE> ON <TABLA>
+AFTER o INSTEAD OF(Se ejecuta en lugar de) INSERT/DELETE/UPDATE
+AS 
+BEGIN
+	*Script a ejecutar posterior al Insert/Delete/Update (INSERTED/DELETED/UPDATED Tablas temporales con la estructura de la tabla que se haya manipulado anteriormente)
+END
+
+
+
+*En caso de querer editar dicho Trigger:
+ALTER TRIGGER <TR_NOMBRE> ON <TABLA>
+AFTER INSERT/DELETE/UPDATE
+AS 
+BEGIN
+	*Script a ejecutar posterior al Insert/Delete/Update
+END
+
+
+DROP TRIGGER <TR_NOMBRE>
+
+DISABLE/ENABLE TRIGGER <TR_NOMBRE> ON <TABLA>
